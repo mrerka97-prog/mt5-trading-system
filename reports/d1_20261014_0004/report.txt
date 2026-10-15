@@ -1,0 +1,56 @@
+D1 trend-following судалгаа  2026-10-14 00:04
+Хэрэгсэл (18): EURUSD, GBPUSD, USDJPY, AUDUSD, USDCAD, USDCHF, NZDUSD, EURJPY, GBPJPY, EURGBP, AUDJPY, XAUUSD, XAGUSD, US500, US30, GER40, JP225, OIL
+Эрсдэл 0.3%/арилжаа, нэг зэрэг ≤ 10 позиц, kill-switch-гүй (судалгааны горим)
+Анхаар: кросс хос, индексийн 1 tick-ийн үнийг татсан өдрийн утгаар тогтмол гэж тооцсон.
+
+ХУРААНГУЙ
+       Хувилбар    Хугацаа Зардал  Арилжаа  Win %  Expect R   PF  Жилд %  Max DD %  Sharpe   Swap $
+ donchian20 tr3  in_sample    net      912   26.8    -0.170 0.71   -3.73    -32.27   -0.69 -2761.86
+ donchian20 tr3  in_sample  gross      967   29.2    -0.033 0.95   -0.67    -14.71   -0.09     0.00
+ donchian20 tr3 validation    net      381   28.9    -0.164 0.73   -3.82    -18.70   -0.81  -682.13
+ donchian20 tr3 validation  gross      376   30.3    -0.063 0.90   -1.25    -12.08   -0.24     0.00
+ donchian55 tr3  in_sample    net      618   27.5    -0.142 0.75   -2.34    -22.08   -0.46 -2700.54
+ donchian55 tr3  in_sample  gross      653   32.5     0.050 1.10    0.82     -8.00    0.17     0.00
+ donchian55 tr3 validation    net      255   29.0    -0.174 0.74   -2.38    -13.11   -0.64  -372.19
+ donchian55 tr3 validation  gross      256   32.0    -0.098 0.83   -1.50    -12.11   -0.40     0.00
+donchian100 tr3  in_sample    net      471   24.4    -0.197 0.68   -2.41    -22.05   -0.54 -2338.22
+donchian100 tr3  in_sample  gross      491   30.3     0.047 1.12    0.75     -8.59    0.16     0.00
+donchian100 tr3 validation    net      198   28.8    -0.191 0.70   -2.14     -9.36   -0.67  -289.67
+donchian100 tr3 validation  gross      197   31.5    -0.112 0.81   -1.26     -7.57   -0.39     0.00
+ donchian55 tr5  in_sample    net      473   19.5    -0.286 0.68   -3.13    -27.22   -0.53 -3434.55
+ donchian55 tr5  in_sample  gross      494   24.1     0.041 1.07    0.60    -10.81    0.12     0.00
+ donchian55 tr5 validation    net      195   23.1    -0.166 0.81   -1.59     -8.03   -0.28  -467.54
+ donchian55 tr5 validation  gross      191   25.1    -0.023 0.99   -0.09     -7.00    0.01     0.00
+  ema50/200 tr5  in_sample    net      235   20.4    -0.022 0.99   -0.04    -17.45    0.01 -1223.32
+  ema50/200 tr5  in_sample  gross      239   22.2     0.198 1.27    1.16    -12.66    0.25     0.00
+  ema50/200 tr5 validation    net       83   20.5    -0.281 0.66   -1.25     -7.38   -0.52  -266.44
+  ema50/200 tr5 validation  gross       84   21.4    -0.138 0.82   -0.65     -7.13   -0.22     0.00
+  ema20/100 tr3  in_sample    net      435   33.1    -0.076 0.89   -0.67    -10.67   -0.17 -1856.73
+  ema20/100 tr3  in_sample  gross      445   35.1     0.081 1.13    0.73     -8.79    0.22     0.00
+  ema20/100 tr3 validation    net      173   31.2    -0.135 0.80   -1.27    -11.49   -0.39  -254.99
+  ema20/100 tr3 validation  gross      172   33.1    -0.048 0.90   -0.58     -9.54   -0.17     0.00
+
+ХЭРЭГСЭЛ БҮРИЙН НИЙТ R (in-sample + validation, net)
+variant  donchian100 tr3  donchian20 tr3  donchian55 tr3  donchian55 tr5  ema20/100 tr3  ema50/200 tr5
+symbol                                                                                                
+AUDJPY             -26.4             0.8           -11.6           -20.0            7.0           -8.7
+AUDUSD               0.2            10.6            -2.8           -10.8           16.3           -3.2
+EURGBP             -15.0           -34.7           -20.7           -33.5          -13.1           -4.9
+EURJPY             -19.1           -38.9           -22.1            -8.5          -14.9            8.4
+EURUSD              -0.9            -6.1             0.4            17.1            2.6           24.6
+GBPJPY             -11.2           -20.0            -4.4           -22.6          -11.2            3.5
+GBPUSD              -3.5           -11.5            -7.5            -7.0            3.4           -4.6
+GER40              -10.2            -9.9            -8.6           -14.8           -0.7           -6.1
+JP225                4.5             2.0             3.6            20.5            2.4           19.8
+NZDUSD             -27.1           -18.7           -24.3           -16.0           -9.8          -15.0
+OIL                 25.6            25.7            24.2            21.0           32.2            3.9
+US30                -5.3             2.1            -4.8            -6.7           -6.4           -2.1
+US500              -37.5           -69.0           -47.6           -48.8          -12.7           -8.7
+USDCAD              -3.6            -9.5           -11.3           -25.3          -19.3          -14.5
+USDCHF              -9.6           -36.0           -10.2           -15.6          -15.3          -10.1
+USDJPY               8.8           -11.3             8.6            14.8           -9.2           -4.4
+XAGUSD              -0.1             4.4             0.8            -1.5           -6.2           -5.4
+XAUUSD              -0.1             2.6             6.3           -10.0           -1.4           -0.9
+
+Үнэлэх дүрэм: in-sample БА validation хоёуланд net expectancy > 0, PF > 1.2,
+олон хэрэгсэлд тархсан ашигтай хувилбарыг л сонгоно. Дараа нь --final-ийг НЭГ удаа ажиллуулна.

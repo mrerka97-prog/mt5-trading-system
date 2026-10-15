@@ -1,0 +1,126 @@
+# Системийн тохиргоо. Нууц мэдээлэл энд БИЧИХГҮЙ (.env файлд).
+
+mode: demo            # demo | live. live горимыг P3 хүртэл ашиглахгүй
+allow_live: false     # true болгохгүй бол бот бодит дансанд ажиллахаас татгалзана
+
+symbols:              # XM-ийн нэр дагавартай байж болно (жишээ нь EURUSD#). check_connection.py харуулна
+  - EURUSD
+  - GBPUSD
+  - USDJPY
+
+timeframes:
+  trend: H4
+  entry: H1
+
+risk:
+  risk_per_trade_pct: 0.5     # эхлэхдээ 0.5%, дээд тал 1%
+  max_risk_per_trade_pct: 1.0
+  daily_loss_limit_pct: 2.0
+  max_drawdown_pct: 10.0
+  max_open_positions: 2
+  max_currency_exposure_pct: 2.0
+  min_reward_risk: 1.5
+  min_margin_level_pct: 500
+
+execution:
+  magic_number: 240101
+  deviation_points: 10
+  max_retries: 3
+
+live:                   # P2: E1b демо туршилт (Claude-ийн шийдвэр 2026-10-14)
+  strategy: E1b         # индексийн RSI(2) < 5 mean reversion, D1, long only
+  dry_run: true         # эхлээд захиалга илгээхгүй. Шалгасны дараа false болгоно
+  trade_symbols: [US500, GER40]
+  signal_only_symbols: [US30, JP225]   # хамгийн бага lot 0.1 хэт том тул зөвхөн дохио бүртгэнэ
+  risk_pct: 1.0
+  max_open_positions: 4
+  max_hold_days: 10
+  rsi_threshold: 5
+  pending_timeout_hours: 20   # өдрийн турш spread хэвийн болохыг хүлээнэ
+  max_spread_multiple: 2.0
+  check_interval_sec: 60
+  runner_handles_commands: false   # Telegram командыг telegram_listener.py хариуцна
+
+strategy:             # trend + pullback (баримтын 5-р хэсэг)
+  zone: ema           # ema | fib
+  ema_fast: 20
+  ema_slow: 50
+  ema_trend: 200
+  adx_min: 20
+  rsi_low: 35
+  rsi_mid: 50
+  lookback: 5
+  sl_atr: 1.5
+  tp_atr: 3.0
+  session_utc: [7, 20]
+  rollover_server_hours: [23, 0]
+  max_spread_multiple: 2.0
+
+backtest:
+  initial_balance: 10000
+  slippage_pips: 0.5
+  break_even_r: 1.0
+  trail_atr: 0          # 0 = унтраалттай
+  max_hold_bars: 120    # H1 лаа = 5 хоног
+  variants: [ema, fib]
+  periods:
+    in_sample: ["2018-01-01", "2024-01-01"]       # тохируулах хугацаа
+    out_of_sample: ["2024-01-01", "2100-01-01"]   # огт хараагүй хугацаа (нэг л удаа харна)
+
+research_d1:            # P1.2: D1 trend-following, олон зах зээл
+  # Нэр бүрт XM дээр байж болох нэрсийг жагсаав. download_universe.py олдсоныг нь сонгоно.
+  universe:
+    EURUSD: [EURUSD]
+    GBPUSD: [GBPUSD]
+    USDJPY: [USDJPY]
+    AUDUSD: [AUDUSD]
+    USDCAD: [USDCAD]
+    USDCHF: [USDCHF]
+    NZDUSD: [NZDUSD]
+    EURJPY: [EURJPY]
+    GBPJPY: [GBPJPY]
+    EURGBP: [EURGBP]
+    AUDJPY: [AUDJPY]
+    XAUUSD: [GOLD, XAUUSD]
+    XAGUSD: [SILVER, XAGUSD]
+    US500: [US500Cash, US500, SP500]
+    US30: [US30Cash, US30]
+    GER40: [GER40Cash, GER40, DE40]
+    JP225: [JP225Cash, JP225]
+    OIL: [OILCash, OIL, WTI, USOIL]
+  risk_pct: 0.3           # олон позиц тул нэг арилжааны эрсдэл бага
+  max_open_positions: 10
+  # Урьдчилан бүртгэсэн хувилбарууд (үр дүнг харсны дараа нэмэхгүй)
+  variants:
+    - {mode: donchian, entry_n: 20, trail_atr: 3}
+    - {mode: donchian, entry_n: 55, trail_atr: 3}
+    - {mode: donchian, entry_n: 100, trail_atr: 3}
+    - {mode: donchian, entry_n: 55, trail_atr: 5}
+    - {mode: ema_cross, ema_fast: 50, ema_slow: 200, trail_atr: 5}
+    - {mode: ema_cross, ema_fast: 20, ema_slow: 100, trail_atr: 3}
+  periods:
+    in_sample: ["2010-01-01", "2020-01-01"]
+    validation: ["2020-01-01", "2024-01-01"]
+    out_of_sample: ["2024-01-01", "2100-01-01"]   # зөвхөн --final үед, нэг л удаа
+
+news:                   # Мэдээний календарийн шүүлтүүр (bot/news.py). Эх үүсвэр: ForexFactory-ийн үнэгүй JSON
+  enabled: true
+  impacts: [High]               # High = NFP, CPI, хүүгийн шийдвэр гэх мэт. Medium нэмбэл хэт олон хориг гарна
+  blackout_minutes_before: 30   # мэдээнээс 30 минутын өмнөөс
+  blackout_minutes_after: 30    # 30 минутын дараа хүртэл шинэ арилжаа нээхгүй (хаахыг хориглохгүй)
+  refresh_hours: 6              # кэш (data/news_calendar.json) 6 цаг хүчинтэй — сайтыг хэт олон дуудахгүй
+  stale_hours: 30               # үүнээс хуучин кэш = "мэдэгдэхгүй"
+  fail_closed: false            # календарь мэдэгдэхгүй үед: false = арилжааг зөвшөөрч анхааруулна, true = хориглоно
+  symbol_currencies:            # хэрэгсэл → нөлөөлөх валют (форекс хосыг автоматаар: EURUSD → EUR, USD)
+    US500: [USD]
+    US30: [USD]
+    GER40: [EUR]
+    JP225: [JPY]
+    XAUUSD: [USD]
+    OIL: [USD]
+
+filters:
+  news_blackout_minutes: 30     # (хуучин, ашиглагдахгүй — news хэсгийг үз)
+  max_spread_multiple: 2.0
+  rollover_blackout: ["23:45", "00:15"]   # серверийн цагаар
+  friday_close_hour_utc: 20

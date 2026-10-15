@@ -1,0 +1,45 @@
+Backtest тайлан  2026-10-13 23:19
+Эрсдэл 0.5%/арилжаа, эхний баланс 10,000, slippage 0.5 pip, spread = лаа бүрийн бодит spread
+АНХААР: түүхэн мэдээний календарь байхгүй тул мэдээний шүүлтүүр backtest-д ороогүй.
+
+Хувилбар                        Хугацаа  Арилжаа  Сард  Win %  Expect R   PF  Өгөөж %  Жилд %  Max DD %  MC DD95 %  Sharpe  Дараалсан алдагдал  Swap $  Шалгуур
+     ema     in_sample 2018-11..2024-01       75   1.2   22.7    -0.229 0.65    -8.12   -1.64    -10.28     -12.58   -1.54                  10  -40.91 ДАВААГҮЙ
+     ema out_of_sample 2024-01..2026-10      106   3.2   25.5    -0.206 0.67   -10.28   -3.82    -10.28     -15.26   -1.20                  13  -34.40 ДАВААГҮЙ
+     fib     in_sample 2018-11..2024-01      136   2.2   29.4    -0.080 0.87    -5.52   -1.11    -10.04     -13.87   -0.59                  10 -103.09 ДАВААГҮЙ
+     fib out_of_sample 2024-01..2026-10       49   1.5   16.3    -0.437 0.35   -10.01   -3.72    -10.01     -12.01   -3.35                  11  -28.49 ДАВААГҮЙ
+
+== ema_in_sample ==
+        trades  win_rate_pct  expectancy_r  net_profit
+symbol                                                
+EURUSD      15          20.0        -0.433     -302.86
+GBPUSD      34          32.4         0.111      183.30
+USDJPY      26          11.5        -0.556     -692.00
+ema_in_sample шалгуур: арилжааны тоо 75 < 100; profit factor 0.65 < 1.3; expectancy -0.229R ≤ 0
+ema_in_sample: KILL-SWITCH идэвхжсэн
+
+== ema_out_of_sample ==
+        trades  win_rate_pct  expectancy_r  net_profit
+symbol                                                
+EURUSD      34          17.6        -0.440     -686.36
+GBPUSD      31          35.5        -0.004       -3.99
+USDJPY      41          24.4        -0.165     -337.34
+ema_out_of_sample шалгуур: profit factor 0.67 < 1.3; expectancy -0.206R ≤ 0
+ema_out_of_sample: KILL-SWITCH идэвхжсэн
+
+== fib_in_sample ==
+        trades  win_rate_pct  expectancy_r  net_profit
+symbol                                                
+EURUSD      41          43.9         0.296      607.95
+GBPUSD      41          29.3         0.043       73.51
+USDJPY      54          18.5        -0.459    -1233.95
+fib_in_sample шалгуур: profit factor 0.87 < 1.3; expectancy -0.08R ≤ 0
+fib_in_sample: KILL-SWITCH идэвхжсэн
+
+== fib_out_of_sample ==
+        trades  win_rate_pct  expectancy_r  net_profit
+symbol                                                
+EURUSD      20          20.0        -0.291     -265.45
+GBPUSD      16           6.2        -0.731     -546.61
+USDJPY      13          23.1        -0.301     -188.79
+fib_out_of_sample шалгуур: арилжааны тоо 49 < 100; profit factor 0.35 < 1.3; expectancy -0.437R ≤ 0
+fib_out_of_sample: KILL-SWITCH идэвхжсэн

@@ -1,0 +1,57 @@
+P1.4 урьдчилан бүртгэсэн туршилтууд  2026-10-14 23:04
+Эрсдэл 0.5%/арилжаа, судалгааны горим (kill-switch-гүй). 2024+ ашиглаагүй.
+
+ХУРААНГУЙ
+            Туршилт    Хугацаа Зардал  Арилжаа  Win %  Expect R   PF  Max DD %  Sharpe
+       F1 index TOM  in_sample    net      218   47.2    -0.064 0.70     -8.06   -0.39
+       F1 index TOM  in_sample  gross      229   56.3     0.023 1.12     -4.92    0.15
+       F1 index TOM validation    net       51   56.9     0.081 1.59     -0.82    0.43
+       F1 index TOM validation  gross       51   60.8     0.115 1.93     -0.60    0.64
+F2 index TOM+SMA200  in_sample    net      172   44.8    -0.099 0.54     -8.27   -0.67
+F2 index TOM+SMA200  in_sample  gross      181   55.8    -0.008 0.95     -5.03   -0.06
+F2 index TOM+SMA200 validation    net       35   57.1     0.071 1.52     -0.78    0.28
+F2 index TOM+SMA200 validation  gross       36   61.1     0.105 1.87     -0.66    0.47
+   F3 index double7  in_sample    net      246   60.6    -0.057 0.79     -7.48   -0.36
+   F3 index double7  in_sample  gross      268   71.6     0.084 1.44     -2.97    0.66
+   F3 index double7 validation    net       49   59.2    -0.095 0.74     -2.69   -0.39
+   F3 index double7 validation  gross       50   60.0    -0.040 0.90     -2.57   -0.17
+
+ДҮГНЭЛТ
+F1 index TOM: ДАВААГҮЙ
+F2 index TOM+SMA200: ДАВААГҮЙ
+F3 index double7: ДАВААГҮЙ
+F4 TSMOM: ДАВААГҮЙ
+
+E1b-тэй давхцал (2010–2023)
+  F1 index TOM: 268 арилжаа, E1b-ээс ±3 өдөрт орсон 29 (11%)
+  F2 index TOM+SMA200: 207 арилжаа, E1b-ээс ±3 өдөрт орсон 28 (14%)
+  F3 index double7: 293 арилжаа, E1b-ээс ±3 өдөрт орсон 102 (35%)
+
+F4 Time-series momentum (18 хэрэгсэл, 252 өдөр, сар бүр, swap-гүй)
+  in_sample: жилийн өгөөж 0.42%, хэлбэлзэл 4.97%, Sharpe 0.09
+  validation: жилийн өгөөж 0.07%, хэлбэлзэл 5.26%, Sharpe 0.01
+  Шалгуур: хоёр хугацаанд Sharpe > 0.5
+
+-- F1 index TOM: хэрэгсэл бүрээр (net R)
+        in_sample_n  in_sample_R  validation_n  validation_R
+symbol                                                      
+GER40            57       -0.046           4.0         0.194
+JP225            15       -0.002           NaN           NaN
+US30             47       -0.038           NaN           NaN
+US500            99       -0.096          47.0         0.072
+
+-- F2 index TOM+SMA200: хэрэгсэл бүрээр (net R)
+        in_sample_n  in_sample_R  validation_n  validation_R
+symbol                                                      
+GER40            46       -0.090           3.0         0.285
+JP225             3        0.154           NaN           NaN
+US30             40       -0.053           NaN           NaN
+US500            83       -0.135          32.0         0.051
+
+-- F3 index double7: хэрэгсэл бүрээр (net R)
+        in_sample_n  in_sample_R  validation_n  validation_R
+symbol                                                      
+GER40            67       -0.060           6.0        -0.352
+JP225             2        0.754           NaN           NaN
+US30             60       -0.115           NaN           NaN
+US500           117       -0.040          43.0        -0.059
